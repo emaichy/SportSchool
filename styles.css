@@ -1,0 +1,47 @@
+:root{--bg:#F4F3FF;--ink:#17153B;--pri:#5B3DF5;--mint:#00D4A1;--card:#fff;--mut:#5f5c8a;--bd:#dedbff;--sh:0 8px 24px -12px rgba(91,61,245,.45)}
+@media(prefers-color-scheme:dark){:root{--bg:#110F2A;--ink:#ECEAFF;--card:#1B1942;--mut:#A9A5D6;--bd:#2E2B63;--sh:0 8px 24px -12px #000}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Segoe UI","Avenir Next",system-ui,sans-serif}
+h1,h2{font-weight:800;letter-spacing:-.01em;margin:.3em 0}
+.top{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.1rem;background:linear-gradient(120deg,#3B22C9,#5B3DF5 55%,#8B5CF6);color:#fff}
+.top h1{margin:0;font-size:1.5rem}
+.badge{font-size:.8rem;padding:.2rem .7rem;border-radius:99px;background:#ffffff30}
+.badge.off{background:#FFB020;color:#17153B;font-weight:700}
+#tabs{display:flex;gap:.4rem;overflow-x:auto;padding:.6rem;background:var(--card);box-shadow:var(--sh)}
+#tabs button{flex:0 0 auto;padding:.5rem 1rem;border:0;border-radius:99px;background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+#tabs button.on{background:var(--pri);color:#fff;font-weight:700}
+main{max-width:780px;margin:auto;padding:1rem}
+.view{display:none}.view.on{display:block}
+form{display:grid;gap:.8rem;background:var(--card);padding:1.1rem;border-radius:16px;box-shadow:var(--sh);margin-bottom:1rem}
+form.inline{grid-template-columns:1fr 1fr;align-items:end}form.inline .btn{grid-column:1/-1}
+label{display:grid;gap:.25rem;font-size:.88rem;color:var(--mut)}
+input,select,textarea{font:inherit;padding:.6rem .7rem;border:2px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:var(--pri)}
+:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+.btn{padding:.7rem 1.1rem;border:0;border-radius:10px;background:var(--pri);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.btn.ghost,.mini.ghost{background:none;color:var(--pri);border:2px solid var(--pri)}
+@media(prefers-color-scheme:dark){.btn.ghost,.mini.ghost{color:#B7A8FF;border-color:#8B5CF6}}
+.mini{padding:.3rem .7rem;border:0;border-radius:8px;background:var(--mint);color:#06281f;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.geo{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;font-size:.88rem}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin:1rem 0}
+.stat{background:var(--card);border-radius:16px;box-shadow:var(--sh);padding:.8rem 1rem;border-top:5px solid var(--pri)}
+.stat:nth-child(2){border-color:var(--mint)}.stat:nth-child(3){border-color:#FFB020}.stat:nth-child(4){border-color:#FF4D8D}
+.stat b{display:block;font-size:2rem;line-height:1.2}.stat span{color:var(--mut);font-size:.85rem}
+.list{list-style:none;padding:0;display:grid;gap:.5rem}
+.list li{display:flex;justify-content:space-between;gap:.6rem;align-items:center;padding:.7rem 1rem;background:var(--card);border-radius:12px;box-shadow:var(--sh)}
+.list li div{display:grid}.list small{color:var(--mut)}.list li span{display:flex;gap:.4rem}
+.wrap{overflow-x:auto;margin-top:1rem;border-radius:16px;box-shadow:var(--sh)}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+th{background:var(--pri);color:#fff}
+th,td{padding:.6rem;text-align:left;font-size:.9rem}tr+tr td{border-top:1px solid var(--bd)}
+a{color:var(--pri)}@media(prefers-color-scheme:dark){a{color:#B7A8FF}}
+.muted{color:var(--mut)}pre{white-space:pre-wrap;font-size:.8rem}
+.bars{display:grid;gap:.5rem}.bar{display:grid;grid-template-columns:90px 1fr 60px;gap:.5rem;align-items:center;font-size:.85rem}
+.bar i{display:block;height:14px;background:linear-gradient(90deg,var(--pri),var(--mint));border-radius:99px}
+#splash{position:fixed;inset:0;z-index:9;background:linear-gradient(160deg,#2A1B8F,#5B3DF5 60%,#00B88C);color:#fff;display:grid;place-content:center;text-align:center;transition:opacity .5s}
+#splash h1{font-size:3rem;margin:0}#splash .muted{color:#ffffffb0}#splash.hide{opacity:0;pointer-events:none}
+.lane{height:6px;border-radius:9px;background:var(--mint);width:0;margin:0 auto 1rem;animation:run 1.4s ease-out forwards}
+@keyframes run{to{width:220px}}
+#banner{position:sticky;top:0;z-index:5;background:#FFB020;color:#17153B;padding:.5rem 1rem;font-weight:700;text-align:center}#banner[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){.lane{animation:none;width:220px}#splash{transition:none}}

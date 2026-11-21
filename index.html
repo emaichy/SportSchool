@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SportSchool</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#5B3DF5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%235B3DF5%27/%3E%3Ccircle cx=%2716%27 cy=%2713%27 r=%275%27 fill=%27none%27 stroke=%27white%27 stroke-width=%272%27/%3E%3Crect y=%2724%27 width=%2732%27 height=%272%27 fill=%27%2300D4A1%27/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div id="splash"><div class="lane"></div><h1>SportSchool</h1><p>Cada minuto cuenta</p><p class="muted">Cargando…</p></div><div id="banner" hidden>Sin conexión: los registros se guardan en el dispositivo y se sincronizarán al reconectar.</div>
+<header class="top"><h1>SportSchool</h1><span id="net" class="badge">en línea</span></header>
+<nav id="tabs">
+ <button data-v="home" class="on">Inicio</button><button data-v="estudiantes">Estudiantes</button>
+ <button data-v="actividad">Actividad</button><button data-v="historial">Historial</button><button data-v="desempeno">Desempeño</button>
+</nav>
+<main>
+<section id="home" class="view on">
+ <h2>Panel del entrenador</h2>
+ <div class="stats" id="statsHome"></div>
+ <p class="muted">Registra estudiantes y actividades; todo se guarda en el dispositivo y funciona sin conexión.</p>
+ <div class="row"><button class="btn" id="btnPerm">Activar notificaciones</button><button class="btn ghost" id="btnPush">Sincronizar pendientes</button><button class="btn ghost" id="btnSync">Consultar servicio remoto (Fetch)</button></div>
+ <p id="pendTxt" class="muted"></p><pre id="fetchOut" class="muted"></pre>
+</section>
+<section id="estudiantes" class="view">
+ <h2>Registrar estudiante</h2>
+ <form id="fEst">
+  <label>Nombre<input name="nombre" required></label>
+  <label>Grupo<input name="grupo" required placeholder="Ej. 3°B"></label>
+  <label>Disciplina<select name="disciplina"><option>Atletismo</option><option>Fútbol</option><option>Basquetbol</option><option>Natación</option><option>Voleibol</option><option>Ciclismo</option></select></label>
+  <button class="btn">Guardar estudiante</button>
+ </form>
+ <ul id="listEst" class="list"></ul>
+</section>
+<section id="actividad" class="view">
+ <h2>Actividades disponibles</h2>
+ <form id="fCat" class="inline">
+  <label>Nueva actividad<input name="nombre" required placeholder="Ej. Carrera continua"></label>
+  <label>Descripción<input name="desc" placeholder="Opcional"></label>
+  <button class="btn">Crear actividad</button>
+ </form>
+ <ul id="listCat" class="list"></ul>
+ <h2>Registrar actividad</h2>
+ <form id="fAct">
+  <label>Estudiante<select name="estudianteId" id="selEst" required></select></label>
+  <label>Fecha<input type="date" name="fecha" required></label>
+  <label>Actividad<select name="actividad" id="selCat" required></select></label>
+  <label>Duración (min)<input type="number" name="min" min="1" step="1" required></label>
+  <label>Distancia (km)<input type="number" name="km" min="0" step="0.01" required></label>
+  <label>Observaciones<textarea name="obs" rows="2"></textarea></label>
+  <div class="geo"><button type="button" class="btn ghost" id="btnGeo">Obtener mi ubicación</button><span id="geoOut" class="muted" role="status">Ubicación no agregada (opcional)</span></div>
+  <button class="btn">Guardar actividad</button>
+ </form>
+ <p id="msg" class="muted" role="status"></p>
+</section>
+<section id="historial" class="view">
+ <h2>Historial deportivo</h2>
+ <label>Estudiante<select id="selHist"></select></label>
+ <div class="wrap"><table><thead><tr><th>Fecha</th><th>Actividad</th><th>Min</th><th>Km</th><th>Notas</th><th>Ubicación</th></tr></thead><tbody id="tbHist"></tbody></table></div>
+</section>
+<section id="desempeno" class="view">
+ <h2>Desempeño</h2>
+ <label>Estudiante<select id="selDes"></select></label>
+ <div class="stats" id="statsDes"></div>
+ <div id="bars" class="bars"></div>
+</section>
+</main>
+<script src="app.js"></script>
+</body></html>
